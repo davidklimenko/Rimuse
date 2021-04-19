@@ -1,9 +1,26 @@
-import './App.css';
+import './App.css'
+import react from 'react'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
+import Nav from "./components/NavBar/NavBar"
 
-function App() {
+export default function App() {
   return (
-    <p>david+vlad</p>
+    <BrowserRouter>
+      <Nav></Nav>
+
+      <Switch>
+          <Route path="/">
+              
+          </Route>
+
+      </Switch>
+    </BrowserRouter>
   );
 }
 
-export default App;
+
