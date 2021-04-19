@@ -6,18 +6,34 @@ import {
   Route,
   Link
 } from "react-router-dom"
-import Nav from "./components/NavBar/NavBar"
+import Navbar from "./components/NavBar/NavBar"
+import PlayList from "./components/Playlist/Playlist"
+import Player from "./components/Player/Player"
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Nav></Nav>
-
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">My songs</Link>
+              </li>
+              <li>
+                <Link to="/favorites">Favorites</Link>
+              </li>
+              <li>
+                <Link to="/playlists">Playlists</Link>
+              </li>
+            </ul>
+          </nav>  
+      {/* <Navbar></Navbar> */}
       <Switch>
           <Route path="/">
-              
+              <PlayList></PlayList>
           </Route>
-
+          <Route path="/playlists">
+              <Player></Player>
+          </Route>
       </Switch>
     </BrowserRouter>
   );
