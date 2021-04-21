@@ -7,35 +7,28 @@ import {
   Link
 } from "react-router-dom"
 import Navbar from "./components/NavBar/NavBar"
-import PlayList from "./components/Playlist/Playlist"
+import Catalog from "./components/Catalog/Catalog"
+import Playlist from './components/Catalog/Playlist/Playlist'
 import Player from "./components/Player/Player"
+import Favorites from "./components/Favorites/Favorites"
 
 export default function App() {
   return (
     <BrowserRouter>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">My songs</Link>
-              </li>
-              <li>
-                <Link to="/favorites">Favorites</Link>
-              </li>
-              <li>
-                <Link to="/playlists">Playlists</Link>
-              </li>
-            </ul>
-          </nav>  
-      {/* <Navbar></Navbar> */}
-      <Switch>
-          <Route path="/">
-              <PlayList></PlayList>
+      <Navbar></Navbar>
+          <Route path="/" render={() => <Playlist/>}>
+              
           </Route>
-          <Route path="/playlists">
-              <Player></Player>
+          <Route path="/favorites" render={() => <Favorites/>}>
+              
           </Route>
-      </Switch>
+          <Route path="/catalog" render={() => <Catalog/>}>
+              
+          </Route>
+      <Player/>
+      <Catalog/>
     </BrowserRouter>
+    
   );
 }
 

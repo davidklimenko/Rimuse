@@ -1,6 +1,6 @@
 import React from "react"
 import {
-  Link
+  NavLink
 } from "react-router-dom"
 
 export default function NavBar(){
@@ -8,13 +8,13 @@ export default function NavBar(){
         <nav>
         <ul>
           <li>
-            <Link to="/">My songs</Link>
+            <NavLink to="/">My songs</NavLink>
           </li>
           <li>
-            <Link to="/favorites">Favorites</Link>
+            <NavLink to="/favorites">Favorites</NavLink>
           </li>
           <li>
-            <Link to="/playlists">Playlists</Link>
+            <NavLink to="/catalog">Playlists</NavLink>
           </li>
         </ul>
       </nav>  
