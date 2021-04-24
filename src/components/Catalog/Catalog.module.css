@@ -1,5 +1,5 @@
-.playlist {
-    width: 600px;
-    height: 1000px;
-    background-color: rgb(92, 92, 92);
+.catalog {
+    width: 100%;
+    padding: 20px 15px 50px 15px;
+    background-color: rgb(215, 253, 214);
 }
