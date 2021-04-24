@@ -1,72 +1,22 @@
-import react from "react"
+import react from 'react'
 import style from './Playlist.module.css'
+import Song from './Song/Song'
 
 export default function PlayList(){
     return (
        <div className={style.playlist}>
-           <h1>Playlist</h1>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <h1>Playlist</h1>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <h1>Playlist</h1>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
-            <p>song 1</p>
-            <p>song 2</p>
-            <p>song 3</p>
-            <p>song 4</p>
+           <div className={style.playlist__title}>
+                <h1 className={style.playlist__title_text}>My songs</h1>
+                <div className={style.playlist__title_line}></div>
+           </div>
+                <Song />
+                <Song />
+                <Song />
+                <Song />
+                <Song />
+                <Song />
+                <Song />
+                <Song /> 
        </div>
         
     )
