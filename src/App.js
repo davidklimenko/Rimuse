@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom"
 
-function App() {
+import NavBar from "./components/NavBar/NavBar"
+import Catalog from "./components/Catalog/Catalog"
+import Playlist from './components/Catalog/Playlist/Playlist'
+import Player from "./components/Player/Player"
+import Favorites from "./components/Favorites/Favorites"
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="wrapper">
+        <div className="container">
+          <NavBar/>
+          <div className="content">
+            <div className="main">
+              <Route exact={true} path="/" render={() => <Playlist/>}/>
+              <Route exact={true} path="/favorites" render={() => <Favorites/>}/>
+              <Route exact={true} path="/catalog" render={() => <Catalog/>}/>
+            </div>  
+            <Player/>
+          </div>
+        </div>
+      </div>
+    </BrowserRouter>
+    
   );
 }
 
-export default App;
+

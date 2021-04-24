@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body::-webkit-scrollbar {
+    width: 0.3em;
+}
+   
+body::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+body::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.wrapper {
+    min-height: 700px;
+    height: 100vh;
+    overflow: hidden;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.container {
+    max-width: 1300px;
+    margin: auto;
+    height: 100%;
+    display: flex;
 }
 
-.App-link {
-  color: #61dafb;
+.content {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main {
+    overflow-y: scroll;
+    height: calc(100% - 250px);
+    overflow-y: scroll;
+}
+
+.main::-webkit-scrollbar {
+    width: 0.4em;
+}
+   
+.main::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+   
+.main::-webkit-scrollbar-thumb {
+    background-color: rgb(73, 73, 73);
+    border-radius: 6px;
 }

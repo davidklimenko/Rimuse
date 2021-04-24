@@ -1,0 +1,9 @@
+.player {
+    background-color: rgba(202, 247, 247, 0.267);
+    width: 100%;
+    height: 250px;
+    /* position: absolute;
+    bottom: 0;
+    right: 0;
+     */
+}
