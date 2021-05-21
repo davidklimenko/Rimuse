@@ -4,7 +4,7 @@ import logo from '../../../../img/Song_Logo.png'
 import detail__icon from '../../../../img/detail-icon.svg'
 
 
-export default function Song(){
+ const Song = ({data}) => {
     return (
         <div className={style.song}>
             <div className={style.song__left}>
@@ -13,7 +13,7 @@ export default function Song(){
                 </div>
 
                 <div className={style.song__left_text}>
-                    <h1>НЕ ЖАЛЬ ft. Скриптонит</h1>
+                    <h1>{data.songName}</h1>
                     <div className={style.song__left_text_detail}>
                         <span> MP3 </span> |
                         <span> 44kHz </span> |
@@ -32,3 +32,5 @@ export default function Song(){
         </div>
     )
 }
+
+export default Song
