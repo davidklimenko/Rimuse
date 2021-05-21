@@ -1,9 +1,5 @@
 .player {
-    background-color: rgba(202, 247, 247, 0.267);
-    width: 100%;
+    background-color: #E7E8ED;
     height: 250px;
-    /* position: absolute;
-    bottom: 0;
-    right: 0;
-     */
+    padding: 20px 15px;
 }

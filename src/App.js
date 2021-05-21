@@ -1,10 +1,11 @@
 import './App.css'
 import {
   BrowserRouter,
-  Switch,
   Route,
-  Link
+  Redirect
 } from "react-router-dom"
+import {Provider} from 'react-redux'
+import store from './redux/store'
 
 import NavBar from "./components/NavBar/NavBar"
 import Catalog from "./components/Catalog/Catalog"
@@ -13,23 +14,26 @@ import Player from "./components/Player/Player"
 import Favorites from "./components/Favorites/Favorites"
 
 export default function App() {
+
   return (
-    <BrowserRouter>
-      <div className="wrapper">
-        <div className="container">
-          <NavBar/>
-          <div className="content">
-            <div className="main">
-              <Route exact={true} path="/" render={() => <Playlist/>}/>
-              <Route exact={true} path="/favorites" render={() => <Favorites/>}/>
-              <Route exact={true} path="/catalog" render={() => <Catalog/>}/>
-            </div>  
-            <Player/>
+    <Provider store={store}> 
+      <BrowserRouter>
+        <div className="wrapper">
+          <div className="container">
+            <NavBar/>
+            <div className="content">
+              <div className="main">
+                <Route path="/playlist/:id" component={Playlist}/>
+                <Route path="*" exact component={Playlist}>
+                  <Redirect to="/playlist/main" />
+                </Route>
+              </div>  
+              <Player/>
+            </div>
           </div>
         </div>
-      </div>
-    </BrowserRouter>
-    
+      </BrowserRouter>
+    </Provider>
   );
 }
 
