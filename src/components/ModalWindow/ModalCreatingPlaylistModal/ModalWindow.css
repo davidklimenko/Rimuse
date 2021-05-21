@@ -1,0 +1,27 @@
+.modal {
+    background-color: blue;
+    font-size: 100px;
+}
+
+.modal_dialog{
+    z-index: 1001;
+}
+
+.modal_header{
+
+}
+.modal_title{
+
+}
+
+.modal_Close{
+
+}
+
+.modal_button{
+
+}
+
+.modal_footer{
+
+}
