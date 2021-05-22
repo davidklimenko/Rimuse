@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
 import style from './Player.module.css'
 import logo from '../../img/Song__Logo-player.png'
-import ModalWindow from "../ModalWindow/ModalCreatingPlaylistModal/ModalWindow.jsx"
 
 export default function Player(){
-    const [isModal, setIsModal] = useState(false);
-    const [valuePlayList, setvaluePlayList] = useState('');
 
     return (
         <div className={style.player}>
@@ -16,12 +13,11 @@ export default function Player(){
                 <div className={style.upper_photo}>
                     <img src={logo} alt="image not found"/>
                 </div>
-                <button onClick={()=>{
-                    setIsModal(true)
-                }}>dasdasdasdads</button>
-                { isModal && <ModalWindow setIsModal={setIsModal} setvaluePlayList={setvaluePlayList} valuePlayList={valuePlayList}/>}
+                
+                
             </div>
             <div className={style.lowerContent}>
+                <button onClick={console.log}></button>
             </div>
         </div>
     )

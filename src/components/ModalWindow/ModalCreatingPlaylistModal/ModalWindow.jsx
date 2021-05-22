@@ -1,15 +1,18 @@
 import React, { useState } from 'react'
 import './ModalWindow.css'
 
-export default ({setIsModal, setvaluePlayList, valuePlayList}) => {
+export default ({setIsModal, setvaluePlayList}) => {
+  const [localState, setlocalState] = useState('');
+
     const onClose = () => {
       setIsModal(false);
     }
 
     const takeValue = () => {
-      setvaluePlayList(valuePlayList);
+      setvaluePlayList(localState);
       setIsModal(false);
-      console.log(valuePlayList)
+      setlocalState('');
+      alert('Playlist created' +' '+ localState)
     }
 
     return (
@@ -21,7 +24,7 @@ export default ({setIsModal, setvaluePlayList, valuePlayList}) => {
               </span>
             </div>
             <div className="modal-body">
-              <input type="text" value={valuePlayList} onChange={(e) => setvaluePlayList(e.target.value)}/>
+              <input type="text" value={localState} onChange={(e) => setlocalState(e.target.value)}/>
               <div className="modal-button">
                 <input type="submit" value="Create" onClick={takeValue}/>
                 <button className="modal-button-use" onClick={onClose}>Cancel</button>
