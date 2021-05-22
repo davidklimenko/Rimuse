@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import {NavLink} from "react-router-dom"
 
 import logo from '../../img/nav/logo.svg'
@@ -7,11 +7,13 @@ import playListIcon from '../../img/nav/playlist.svg'
 import addPlaylistIcon from '../../img/nav/addPlaylist.svg'
 import favoriteIcon from '../../img/nav/favorite.svg'
 import style from './NavBar.module.css'
+import ModalWindow from '../ModalWindow/ModalCreatingPlaylistModal/ModalWindow'
 
 import {useSelector} from 'react-redux'
 
 export default function NavBar() {
-
+  const [isModal, setIsModal] = useState(false);
+  const [valuePlayList, setvaluePlayList] = useState('');
   let {catalog} = useSelector( state => state.catalogReducer)
 
   const [main] = catalog.filter( item => { // object main playlist
@@ -66,9 +68,13 @@ export default function NavBar() {
               </li>
               <li>
                 <div className={style.navLink}>
-                  <img src={playListIcon} alt="image not found"/>
+                    <img src={playListIcon} alt="image not found"/>    
+
                   <span style={{marginLeft: '-15px'}}>Playlists</span>
-                  <img src={addPlaylistIcon} style={{marginRight: '8px'}} alt="image not found"/>
+                  <img src={addPlaylistIcon} style={{marginRight: '8px'}} alt="image not found" onClick={() => {
+                    setIsModal(true)
+                  }}/>
+                  { isModal && <ModalWindow setIsModal={setIsModal}  setvaluePlayList={setvaluePlayList}/>}
                 </div>
               </li>
             </ul>
