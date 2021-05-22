@@ -11,7 +11,6 @@ import NavBar from "./components/NavBar/NavBar"
 import Catalog from "./components/Catalog/Catalog"
 import Playlist from './components/Catalog/Playlist/Playlist'
 import Player from "./components/Player/Player"
-import Favorites from "./components/Favorites/Favorites"
 
 
 export default function App() {

@@ -1,13 +1,18 @@
 import React from "react"
 import {NavLink} from "react-router-dom"
-import style from './NavBar.module.css'
+
 import logo from '../../img/nav/logo.svg'
+import homeIcon from '../../img/nav/home.svg'
+import playListIcon from '../../img/nav/playlist.svg'
+import addPlaylistIcon from '../../img/nav/addPlaylist.svg'
+import favoriteIcon from '../../img/nav/favorite.svg'
+import style from './NavBar.module.css'
+
 import {useSelector} from 'react-redux'
 
 export default function NavBar() {
 
   let {catalog} = useSelector( state => state.catalogReducer)
-
 
   const [main] = catalog.filter( item => { // object main playlist
     return item.type === 'MAIN-PLAYLIST' && item
@@ -16,8 +21,6 @@ export default function NavBar() {
   const [favorite] = catalog.filter( item => { // object favorite playlist
     return item.type === 'FAVORITES-PLAYLIST' && item
   })
-
-
 
   const renderPlaylists = () => {
     let hasCustomPlaylist = false
@@ -32,7 +35,6 @@ export default function NavBar() {
             </li>
         )
       }
-        
     })
 
     if (!hasCustomPlaylist) {
@@ -50,17 +52,23 @@ export default function NavBar() {
             <ul>
               <li>
                 <NavLink to={`/playlist/${main.id}`} activeClassName={style.active} className={style.navLink}>
+                  <img src={homeIcon} alt="image not found"/>
                   <span>{main.playlistName}</span>
+                  <span>143</span>
                 </NavLink>
               </li>
               <li>
                 <NavLink to={`/playlist/${favorite.id}`} activeClassName={style.active} className={style.navLink}>
+                  <img src={favoriteIcon} alt="image not found"/>
                   <span>{favorite.playlistName}</span>
+                  <span>143</span>
                 </NavLink>
               </li>
               <li>
                 <div className={style.navLink}>
-                  <span>Playlists</span>
+                  <img src={playListIcon} alt="image not found"/>
+                  <span style={{marginLeft: '-15px'}}>Playlists</span>
+                  <img src={addPlaylistIcon} style={{marginRight: '8px'}} alt="image not found"/>
                 </div>
               </li>
             </ul>

@@ -1,16 +1,19 @@
-import react from 'react'
+import React from 'react'
+import uploadImg from './img/upload_song.svg'
 import style from './Playlist.module.css'
 import Song from './Song/Song'
 import {useSelector} from 'react-redux'
 
 const PlayList = (props) => {
-    console.log(props)
     const currentPlaylistId = props.match.params.id
     let {catalog} = useSelector( state => state.catalogReducer)
 
     const [currentPlaylist] = catalog.filter( item => {
         return item.id === currentPlaylistId && item
     })
+    if (!currentPlaylist) { // no such id  => redirect
+        return null
+    }
 
     const renderSongs = () => {
         let playlistHasSongs = false
@@ -20,7 +23,7 @@ const PlayList = (props) => {
         })
 
         if (!playlistHasSongs) {
-            return <div>No songs</div>
+            return <div className={style.noSongs}>No songs</div>
         } else {
             return res
         }
@@ -28,11 +31,17 @@ const PlayList = (props) => {
 
     return (
         <div className={style.playlist}>
-            <div className={style.playlist__title}>
+            <div className={style.playlist__top}>
+                <div className={style.playlist__title}>
                     <h1 className={style.playlist__title_text}>{currentPlaylist.playlistName}</h1>
                     <div className={style.playlist__title_line}></div>
-                    {renderSongs()}
+                </div>
+                <div className={style.playlist__upload}>
+                    <span className={style.playlist__upload_text}>Upload song</span>
+                    <img src={uploadImg} className={style.playlist__upload_image} alt="image not found"/>
+                </div>
             </div>
+            {renderSongs()}
         </div> 
         )
 }
