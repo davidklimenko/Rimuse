@@ -14,6 +14,15 @@ import Player from "./components/Player/Player"
 
 export default function App() {
 
+const AUTH_URL = 'https://accounts.spotify.com/authorize?client_id=&response_type=code&redirect_uri=http://localhost:3000&scope='
+
+
+
+
+
+
+
+
   return (
     <Provider store={store}> 
       <BrowserRouter>

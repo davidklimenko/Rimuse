@@ -29,16 +29,16 @@ const PlayList = (props) => {
         }
     }
 
+    const openModalWindow = () => {
+        console.log('window has opened')
+    }
+
     return (
         <div className={style.playlist}>
             <div className={style.playlist__top}>
                 <div className={style.playlist__title}>
                     <h1 className={style.playlist__title_text}>{currentPlaylist.playlistName}</h1>
                     <div className={style.playlist__title_line}></div>
-                </div>
-                <div className={style.playlist__upload}>
-                    <span className={style.playlist__upload_text}>Upload song</span>
-                    <img src={uploadImg} className={style.playlist__upload_image} alt="image not found"/>
                 </div>
             </div>
             {renderSongs()}
