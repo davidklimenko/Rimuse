@@ -1,27 +1,27 @@
 import React, { useState } from 'react'
-import style from '../ModalCreatingPlaylistModal/ModalWindow.css'
+import './ModalWindow.css'
 
 export default ({setIsModal}) => {
-    const onClose = function(){
+    const onClose = () => {
         setIsModal(false);
     }
     const [inputValue, setInpuValue] = useState();
     return (
-        <div className={style.modal}>
-          <div className={style.modal_dialog}>
-            <div className={style.modal_header}>
-              <h3 className={style.modal_title}>Creating new playlist...</h3>
-              <span className={style.modal_Close}>
+        <div className="modal" onClick={onClose}>
+          <div className="modal-dialog"  onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h3 className="modal-title">Creating new playlist...</h3>
+              <span className="modal-Close">
               </span>
             </div>
-            <div className={style.modal_body}>
+            <div className="modal-body">
               <input type="text" value={inputValue} onChange={(e) => setInpuValue(e.target.value)}/>
-              <div className={style.modal_button}>
-                <button onClick={console.log(inputValue)}>Create</button>
-                <button onClick={onClose}>Cancel</button>
+              <div className="modal-button">
+                <button className="modal-button-use" onClick={console.log(inputValue)}>Create</button>
+                <button className="modal-button-use" onClick={onClose}>Cancel</button>
               </div>
             </div>
-            <div className={style.modal_footer}></div>
+            <div className="modal-footer"></div>
           </div>
         </div>
     )
