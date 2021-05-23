@@ -1,8 +1,7 @@
-
+import {ADD_PLAYLIST} from '../types/actionTypes.js'
 
 // schema catalog = [ {playlistName, songs: [] }, {playlistName, songs: [] } ... ]
-
-let arr = [
+let state = [
     {
         id : `main`,
         type : 'MAIN-PLAYLIST',
@@ -11,7 +10,7 @@ let arr = [
             {
                 id : `#song${Date.now()}`,
                 songName : '123sdaf sdf',
-                src : '/music/',
+                src : '/music/',    
                 properties : {
                   size : '15MB'
                 }
@@ -64,25 +63,23 @@ let arr = [
     },
 ]
 
-console.log(arr)
-
 const initialState = {
-    catalog : arr
+    catalog : state
 }
 
 const catalogReducer = (state = initialState, action) => {
-
     switch (action.type) {
+        case ADD_PLAYLIST : return {
+            ...state, 
+            catalog : [...state.catalog, {
+                id : `custom${Date.now()}`,
+                type : 'CUSTOM-PLAYLIST',
+                playlistName : action.playlist_title,
+                songs : []
+            }]
+        }
         default : return state
     }
 }
-
-// const foo = (a, b) => () => {
-//     a + b
-// }
-
-// console.log(foo(2, 3))
-
-
 
 export default catalogReducer

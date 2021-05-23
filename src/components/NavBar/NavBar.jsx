@@ -9,28 +9,34 @@ import favoriteIcon from '../../img/nav/favorite.svg'
 import style from './NavBar.module.css'
 import ModalWindow from '../ModalWindow/ModalCreatingPlaylistModal/ModalWindow'
 
-import {useSelector} from 'react-redux'
+
+import {useSelector, useDispatch } from 'react-redux'
+import {add_playlist} from '../../redux/actions/actions.js'
 
 export default function NavBar() {
   const [isModal, setIsModal] = useState(false);
   const [playlistTitle, setPlaylistTitle] = useState('');
-
+  const dispatch = useDispatch()
 
   const inputHandler = (e) => {
     setPlaylistTitle(e.target.value)
   }
-
+  
   const submitForm = () => {
-      console.log(playlistTitle)
-      setPlaylistTitle('')
-      setIsModal(false)
+    setPlaylistTitle('')
+    setIsModal(false)
+    addPlayList();
+    renderPlaylists();
   }
 
   const onClose = () => {
     setIsModal(false)
     setPlaylistTitle('')
   }
-  console.log(playlistTitle)
+  
+  const addPlayList = () => {
+    return !(playlistTitle ==='') ? dispatch(add_playlist(playlistTitle)) : null
+  }
 
   let {catalog} = useSelector( state => state.catalogReducer)
 
@@ -48,7 +54,6 @@ export default function NavBar() {
     submitForm,
     onClose
   }
-
   const renderPlaylists = () => {
     let hasCustomPlaylist = false
     const res = catalog.map( item => {

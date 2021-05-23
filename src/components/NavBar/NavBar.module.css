@@ -52,6 +52,9 @@
     align-items: center;
 }
 
+.navLink > img {
+    cursor: pointer;
+}
 .customNavLink {
     font-size: 16px;
     border-left: 3px solid #EEEEEE;
