@@ -1,4 +1,4 @@
-import {ADD_PLAYLIST} from '../types/actionTypes.js'
+import {ADD_PLAYLIST, ADD_LOCAL, GET_FROM_LOCAL} from '../types/actionTypes.js'
 
 // schema catalog = [ {playlistName, songs: [] }, {playlistName, songs: [] } ... ]
 let state = [
@@ -69,15 +69,19 @@ const initialState = {
 
 const catalogReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_PLAYLIST : return {
-            ...state, 
-            catalog : [...state.catalog, {
+        
+        case ADD_PLAYLIST : 
+            return {
+                ...state, 
+                catalog : [...state.catalog, {
                 id : `custom${Date.now()}`,
                 type : 'CUSTOM-PLAYLIST',
                 playlistName : action.playlist_title,
                 songs : []
             }]
         }
+        case ADD_LOCAL :  localStorage.setItem('addlocal', JSON.stringify(state)) 
+        case GET_FROM_LOCAL : state = JSON.parse(localStorage.getItem('addlocal'))
         default : return state
     }
 }

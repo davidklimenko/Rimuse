@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {NavLink} from "react-router-dom"
 
 import logo from '../../img/nav/logo.svg'
@@ -9,10 +9,11 @@ import favoriteIcon from '../../img/nav/favorite.svg'
 import style from './NavBar.module.css'
 import ModalWindow from '../ModalWindow/ModalCreatingPlaylistModal/ModalWindow'
 
-
 import {useSelector, useDispatch } from 'react-redux'
-import {add_playlist} from '../../redux/actions/actions.js'
+import {add_playlist, add_local, get_from_local} from '../../redux/actions/actions.js'
 
+
+export let persistedState = {};
 export default function NavBar() {
   const [isModal, setIsModal] = useState(false);
   const [playlistTitle, setPlaylistTitle] = useState('');
@@ -26,8 +27,10 @@ export default function NavBar() {
     setPlaylistTitle('')
     setIsModal(false)
     addPlayList();
+    dispatch(add_local())
     renderPlaylists();
   }
+
 
   const onClose = () => {
     setIsModal(false)
@@ -40,6 +43,12 @@ export default function NavBar() {
 
   let {catalog} = useSelector( state => state.catalogReducer)
 
+  useEffect(() => {
+    if(localStorage.getItem('addlocal')){
+      dispatch(get_from_local())
+    }
+  }, [])
+ 
   const [main] = catalog.filter( item => { // object main playlist
     return item.type === 'MAIN-PLAYLIST' && item
   })
