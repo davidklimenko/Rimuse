@@ -1,4 +1,4 @@
-import {ADD_PLAYLIST, ADD_LOCAL, GET_FROM_LOCAL} from '../types/actionTypes.js'
+import {ADD_PLAYLIST, ADD_LOCAL, GET_FROM_LOCAL, ADD_FAVORITE} from '../types/actionTypes.js'
 
 export function add_playlist(title){
 
@@ -17,5 +17,12 @@ export function add_local(){
 export function get_from_local(){
     return {
         type : GET_FROM_LOCAL
+    }
+}
+
+export function add_favorites(data){
+    return {
+        type : ADD_FAVORITE,
+        favorite_data : data
     }
 }

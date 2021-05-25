@@ -31,7 +31,6 @@ export default function NavBar() {
     renderPlaylists();
   }
 
-
   const onClose = () => {
     setIsModal(false)
     setPlaylistTitle('')
@@ -42,11 +41,12 @@ export default function NavBar() {
   }
 
   let {catalog} = useSelector( state => state.catalogReducer)
-
+  
   useEffect(() => {
     if(localStorage.getItem('addlocal')){
       dispatch(get_from_local())
     }
+    dispatch(add_local())
   }, [])
  
   const [main] = catalog.filter( item => { // object main playlist
@@ -95,7 +95,7 @@ export default function NavBar() {
                 <NavLink to={`/playlist/${main.id}`} activeClassName={style.active} className={style.navLink}>
                   <img src={homeIcon} alt="image not found"/>
                   <span>{main.playlistName}</span>
-                  <span>143</span>
+                  <span>{catalog[0].songs.length}</span>
                 </NavLink>
               </li>
               <li>

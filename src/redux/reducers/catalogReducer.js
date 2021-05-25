@@ -1,5 +1,5 @@
-import {ADD_PLAYLIST, ADD_LOCAL, GET_FROM_LOCAL} from '../types/actionTypes.js'
-
+import {ADD_PLAYLIST, ADD_LOCAL, GET_FROM_LOCAL, ADD_FAVORITE} from '../types/actionTypes.js'
+import {find_favorites} from '../../utils/index.js'
 // schema catalog = [ {playlistName, songs: [] }, {playlistName, songs: [] } ... ]
 let state = [
     {
@@ -8,13 +8,71 @@ let state = [
         playlistName : 'My song',
         songs : [
             {
-                id : `#song${Date.now()}`,
-                songName : '123sdaf sdf',
+                id : `#song1$1`,
+                songName : 'melody1',
                 src : '/music/',    
                 properties : {
                   size : '15MB'
                 }
-            }
+            },
+            {
+                id : `#song$2`,
+                songName : 'melody2',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            {
+                id : `#song$3`,
+                songName : 'melody3',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            {
+                id : `#song$4`,
+                songName : 'melody4',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            {
+                id : `#song$5`,
+                songName : 'melody5',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            {
+                id : `#song$6`,
+                songName : 'melody6',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            {
+                id : `#song$7`,
+                songName : 'melody7',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            {
+                id : `#song$8`,
+                songName : 'melody8',
+                src : '/music/',    
+                properties : {
+                  size : '15MB'
+                }
+            },
+            
+
         ]
     },
     {
@@ -23,7 +81,7 @@ let state = [
         playlistName : 'Favorites',
         songs : [
             {
-                id : `#song${Date.now()}`,
+                id : `#song$2`,
                 songName : 'song name 231',
                 src : '/music/',
                 properties : {
@@ -80,8 +138,11 @@ const catalogReducer = (state = initialState, action) => {
                 songs : []
             }]
         }
-        case ADD_LOCAL :  localStorage.setItem('addlocal', JSON.stringify(state)) 
+        case ADD_LOCAL :  localStorage.setItem('addlocal', JSON.stringify(state))
+           return state
         case GET_FROM_LOCAL : state = JSON.parse(localStorage.getItem('addlocal'))
+            return state
+        case ADD_FAVORITE : return find_favorites(state, action.favorite_data)
         default : return state
     }
 }

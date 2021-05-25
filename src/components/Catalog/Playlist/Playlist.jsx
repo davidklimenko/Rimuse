@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import uploadImg from './img/upload_song.svg'
 import style from './Playlist.module.css'
 import Song from './Song/Song'
