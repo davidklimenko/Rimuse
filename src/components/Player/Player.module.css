@@ -1,0 +1,21 @@
+.player {
+    background-color: #E7E8ED;
+    height: 250px;
+    padding: 20px 15px;
+    width: 100%;
+    height: 250px;
+    font-family: 'Roboto' sans-serif;
+}
+
+.upperContent {
+    display: flex;
+    padding: 31px 35px;
+}
+
+.upper_title {
+    font-size: 30px;
+}
+
+.upper_photo {
+    margin-left: auto;
+}

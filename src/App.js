@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import {
+  BrowserRouter,
+  Route,
+  Redirect
+} from "react-router-dom"
+import {Provider} from 'react-redux'
+import store from './redux/store'
 
-function App() {
+import NavBar from "./components/NavBar/NavBar"
+import Catalog from "./components/Catalog/Catalog"
+import Playlist from './components/Catalog/Playlist/Playlist'
+import Player from "./components/Player/Player"
+
+
+export default function App() {
+
+const AUTH_URL = 'https://accounts.spotify.com/authorize?client_id=&response_type=code&redirect_uri=http://localhost:3000&scope='
+
+
+
+
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}> 
+      <BrowserRouter>
+        <div className="wrapper">
+          <div className="container">
+            <NavBar/>
+            <div className="content">
+              <div className="main">
+                <Route path="/playlist/:id" component={Playlist}/>
+                <Route path="*" exact component={Playlist}>
+                  <Redirect to="/playlist/main" />
+                </Route>
+              </div>  
+              <Player/>
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
-export default App;
+
